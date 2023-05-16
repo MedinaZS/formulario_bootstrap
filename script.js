@@ -12,33 +12,36 @@
                 event.preventDefault()
                 event.stopPropagation()
             }
-
-
+            else {
+                event.preventDefault()
+                
+                resetForm()
+            }
             form.classList.add('was-validated')
         }, false)
     })
 
+    
+
 })()
 
 
-// const regex = /^[0-9]*[-]?[0-9]{1}$/
+let resetForm = () =>{
+    document.querySelector(".alert").classList.remove('d-none')   
 
-// let validateRegex = (str) => {
-//     // console.log(str)
-//     let found = str.match(regex)
-//     // console.log(found);
-//     if (found) {
-//         numeroDeDocumento.classList.add("is-valid")
-//         numeroDeDocumento.classList.remove("is-invalid")
-//     }else{
-//         numeroDeDocumento.classList.add("is-invalid")
-//         numeroDeDocumento.classList.remove("is-valid")
-//     }
-// }
+    // Reset inputs
+    const inputs = document.querySelectorAll('input')
+    const selects = document.querySelectorAll('select')
+
+    inputs.forEach(input => {
+        input.value = ""
+        input.checked = false
+    });
+    // Reset select
+    selects.forEach(select => {
+        select.value = ""
+    });
 
 
-// // Numero de documento
-// const numeroDeDocumento = document.querySelector("#numeroDeDocumento")
-// numeroDeDocumento.addEventListener("input", (event)=> validateRegex(event.target.value))
-
-// const invalidNumeroDeDocumento = document.querySelector("#numeroDeDocumento")
+    
+}
